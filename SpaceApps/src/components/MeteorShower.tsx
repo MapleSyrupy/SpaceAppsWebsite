@@ -17,7 +17,6 @@ const Meteor = ({ size = 2, opacity = 0.5 }: MeteorProps) => {
     : Math.random() * 3 + 3; // Short meteors: 3-6s
   const delay = Math.random() * 5; // Random delay between 0-5s
   const angle = 30 + (Math.random() * 10); // Random angle between 30 and 40 degrees (slanted downward)
-  const trailLength = isLongMeteor ? 2 : 1.6; // Multiplier for trail length
 
   return (
     <motion.div

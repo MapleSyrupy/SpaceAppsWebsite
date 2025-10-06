@@ -1,25 +1,19 @@
 import { Box } from "@mui/material";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-import Input from "@mui/material/Input";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Link from "@mui/material/Link";
 // import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-import { useState, type ReactHTMLElement } from "react";
+import { useState} from "react";
 
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -50,7 +44,7 @@ function a11yProps(index: number) {
 function BasicTabs() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = ( newValue: number) => {
     setValue(newValue);
   };
 
@@ -68,34 +62,257 @@ function BasicTabs() {
       >
         <Tabs
           value={value}
-          onChange={handleChange}
+          onChange={()=>handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="KNN" {...a11yProps(0)} />
+          <Tab label="Logistic Regression" {...a11yProps(1)} />
+          <Tab label="Decision Tree" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <h1>Accuracy</h1>
-        <p>Accuracy:0.9615</p>
+        <Box
+          sx={{
+            borderRadius: "10px",
+            backgroundColor: "rgba(20, 41, 155, 0.3)",
+            backdropFilter: "blur(8px)",
+            mt: 1.5,
+            height: "100%",
+            textAlign: "center",
+          }}
+        >
+          <h1>Accuracy</h1>
+          <h1>0.9615</h1>
+          <h1>Confusion Matrix</h1>
+          <TableContainer
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TableCell>True</TableCell>
+            <Table
+              sx={{ minWidth: 650, width: "60%", border: 2, mb: 2 }}
+              aria-label="simple table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell align="right">non-planet</TableCell>
+                  <TableCell align="right">planet</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Non-planet</TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "darkblue" }}>
+                    1175
+                  </TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "white" }}>
+                    <span style={{ color: "black" }}>35</span>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>planet</TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "white" }}>
+                    <span style={{ color: "black" }}>38</span>
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    sx={{ backgroundColor: "lightblue", color: "black" }}
+                  >
+                    649
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell sx={{ textAlign: "center" }} colSpan={2}>
+                    Predicted
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <img
+            src={"/screenshot1.jpg"}
+            alt="ML Model Results"
+            style={{
+              maxWidth: "100%",
+              height: "100%",
+              borderRadius: "8px",
+              padding: "10px",
+            }}
+          />
+        </Box>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <Box
+          sx={{
+            borderRadius: "10px",
+            backgroundColor: "rgba(20, 41, 155, 0.3)",
+            backdropFilter: "blur(8px)",
+            mt: 1.5,
+            height: "100%",
+            textAlign: "center",
+          }}
+        >
+          <h1>Accuracy</h1>
+          <h1>0.9905</h1>
+          <h1>Confusion Matrix</h1>
+          <TableContainer
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TableCell>True</TableCell>
+            <Table
+              sx={{ minWidth: 650, width: "60%", border: 2, mb: 2 }}
+              aria-label="simple table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell align="right">non-planet</TableCell>
+                  <TableCell align="right">planet</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Non-planet</TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "darkblue" }}>
+                    1195
+                  </TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "white" }}>
+                    <span style={{ color: "black" }}>15</span>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>planet</TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "white" }}>
+                    <span style={{ color: "black" }}>17</span>
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    sx={{ backgroundColor: "lightblue", color: "black" }}
+                  >
+                    670
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell sx={{ textAlign: "center" }} colSpan={2}>
+                    Predicted
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <img
+            src={"/screenshot2.jpg"}
+            alt="ML Model Results"
+            style={{
+              maxWidth: "100%",
+              height: "100%",
+              borderRadius: "8px",
+              padding: "10px",
+            }}
+          />
+        </Box>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        <Box
+          sx={{
+            borderRadius: "10px",
+            backgroundColor: "rgba(20, 41, 155, 0.3)",
+            backdropFilter: "blur(8px)",
+            mt: 1.5,
+            height: "100%",
+            textAlign: "center",
+          }}
+        >
+          <h1>Accuracy</h1>
+          <h1>0.9831</h1>
+          <h1>Confusion Matrix</h1>
+          <TableContainer
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <TableCell>True</TableCell>
+            <Table
+              sx={{ minWidth: 650, width: "60%", border: 2, mb: 2 }}
+              aria-label="simple table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell align="right">non-planet</TableCell>
+                  <TableCell align="right">planet</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Non-planet</TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "darkblue" }}>
+                    1199
+                  </TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "white" }}>
+                    <span style={{ color: "black" }}>11</span>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>planet</TableCell>
+                  <TableCell align="right" sx={{ backgroundColor: "white" }}>
+                    <span style={{ color: "black" }}>7</span>
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    sx={{ backgroundColor: "lightblue", color: "black" }}
+                  >
+                    680
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell sx={{ textAlign: "center" }} colSpan={2}>
+                    Predicted
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <img
+            src={"/screenshot3.jpg"}
+            alt="ML Model Results"
+            style={{
+              maxWidth: "100%",
+              height: "100%",
+              borderRadius: "8px",
+              padding: "10px",
+            }}
+          />
+        </Box>
       </CustomTabPanel>
     </Box>
   );
 }
 export default function Root() {
-  function onSubmit(event:React.FormEvent<HTMLFormElement>){ {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    console.log(formData.get("file"))
-    fetch("http://localhost:3000/mldata", {
-      method: "POST",
-      body: formData.get("file")
-    }).then((res) => console.log(res));
-  }
-  }
+  // function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  //   {
+  //     event.preventDefault();
+  //     const formData = new FormData(event.currentTarget);
+  //     console.log(formData.get("file"));
+  //     fetch("http://localhost:3000/mldata", {
+  //       method: "POST",
+  //       body: formData.get("file"),
+  //     }).then((res) => console.log(res));
+  //   }
+  // }
   return (
     <>
       <section
@@ -117,11 +334,14 @@ export default function Root() {
         >
           <BasicTabs />
         </Box>
-        <h1>Upload your own Data!</h1>
-        <form onSubmit={onSubmit}>
-          <Input type="file" name = "file"/>
-          <Button type="submit">Click to submit</Button>
-        </form>
+        <h1>Link to Google Colab for AI algorithm</h1>
+        <Link
+          variant="body2"
+          href = "https://colab.research.google.com/drive/1I8Q2lVoHAbS0xaxfoKdx1JkigFqWU0hu?usp=sharing"
+          sx = {{marginBottom:5}}
+        >
+          Click Here!
+        </Link>
       </section>
     </>
   );

@@ -13,6 +13,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.4",
+    "@mui/x-charts": "^8.13.1",
     "@mui/x-data-grid": "^8.13.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",

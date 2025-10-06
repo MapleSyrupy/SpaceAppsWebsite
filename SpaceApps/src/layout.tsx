@@ -26,12 +26,21 @@ function App() {
             borderRadius: "10px",
             backgroundColor: "rgba(10, 10, 42, 0.3)",
             backdropFilter: "blur(8px)",
-            mt:1.5
-          }}>
+            mt: 1.5,
+          }}
+        >
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              EXOSEARCH
+              EXOQUEST
             </Typography>
+            <Button variant="contained" sx={{ backgroundColor: "gray", mr: 2 }}>
+              <NavLink
+                to="/"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                Home Page
+              </NavLink>
+            </Button>
             <Button variant="contained" sx={{ backgroundColor: "gray" }}>
               <NavLink
                 to="/data"
