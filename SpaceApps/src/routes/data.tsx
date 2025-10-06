@@ -44,7 +44,7 @@ function a11yProps(index: number) {
 function BasicTabs() {
   const [value, setValue] = useState(0);
 
-  const handleChange = ( newValue: number) => {
+  const handleChange = (_e:any, newValue: number) => {
     setValue(newValue);
   };
 
@@ -62,7 +62,7 @@ function BasicTabs() {
       >
         <Tabs
           value={value}
-          onChange={()=>handleChange}
+          onChange={handleChange}
           aria-label="basic tabs example"
         >
           <Tab label="KNN" {...a11yProps(0)} />
